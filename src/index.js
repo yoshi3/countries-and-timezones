@@ -1,4 +1,3 @@
-import 'core-js/features/number/is-integer.js';
 const data = require('./data.json');
 const buildCountry = require('./build-country');
 const buildTimezone = require('./build-timezone');

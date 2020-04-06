@@ -6,6 +6,12 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+function isInteger(value) {
+  return typeof value === 'number' && isFinite(value) && Math.floor(value) === value;
+}
+
+;
+
 function buildTimezone(data, name) {
   var timezone = data.timezones[name];
   if (!timezone) return null;
@@ -17,7 +23,7 @@ function buildTimezone(data, name) {
 
   var country = tz.c || null;
   var utcOffset = tz.u;
-  var dstOffset = Number.isInteger(tz.d) ? tz.d : utcOffset;
+  var dstOffset = isInteger(tz.d) ? tz.d : utcOffset;
   return {
     name: name,
     country: country,

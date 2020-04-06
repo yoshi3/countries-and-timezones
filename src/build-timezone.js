@@ -1,3 +1,9 @@
+function isInteger(value) {
+  return typeof value === 'number' && 
+    isFinite(value) && 
+    Math.floor(value) === value;
+};
+
 function buildTimezone(data, name) {
   const timezone = data.timezones[name];
   if (!timezone) return null;
@@ -11,7 +17,7 @@ function buildTimezone(data, name) {
 
   const country = tz.c || null;
   const utcOffset = tz.u;
-  const dstOffset = Number.isInteger(tz.d) ? tz.d : utcOffset;
+  const dstOffset = isInteger(tz.d) ? tz.d : utcOffset;
 
   return {
     name,
